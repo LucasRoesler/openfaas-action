@@ -1,0 +1,15 @@
+name: 'OpenFaaS CLI Template Repo Pull Action'
+description: 'Pull templates from a remote repository'
+author: 'Lucas Roesler'
+inputs:
+  repository_url:
+    description: 'repository to pull templates from, defaults to the core templates'
+    retuired: false
+runs:
+  using: 'docker'
+  image: 'docker://openfaas/faas-cli:0.9.1'
+  args:
+    - 'faas-cli'
+    - 'template'
+    - 'pull'
+    - '${{ inputs.repository_url }}'

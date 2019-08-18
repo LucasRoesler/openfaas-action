@@ -25,7 +25,7 @@ inputs:
     default: "stack.yml"
 runs:
   using: 'docker'
-  image: 'docker://openfaas/faas-cli:0.9.1'
+  image: 'Dockerfile'
   args:
     - 'faas-cli'
     - 'build'

@@ -1,0 +1,21 @@
+name: 'OpenFaaS CLI Template Store Pull Action'
+description: 'Pull templates from a remote template store'
+author: 'Lucas Roesler'
+inputs:
+  store_url:
+    description: 'store to pull templates from, defaults to the core templates'
+    default: 'https://raw.githubusercontent.com/openfaas/store/master/templates.json'
+    required: false
+  name:
+    description: 'name of the function template to pull'
+    required: true
+runs:
+  using: 'docker'
+  image: 'docker://openfaas/faas-cli:0.9.1'
+  args:
+    - 'faas-cli'
+    - 'template'
+    - 'store'
+    - 'pull'
+    - '${{ inputs.name }}'
+    - '--url=${{ inputs.store_url }}'
