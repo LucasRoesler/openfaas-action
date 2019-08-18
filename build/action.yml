@@ -1,0 +1,35 @@
+name: 'OpenFaaS CLI Build Action'
+description: 'Build your OpenFaaS functions'
+author: 'Lucas Roesler'
+inputs:
+  filter:
+    description: 'Wildcard to match with function names in YAML file'
+    default: ''
+  regex:
+    description: 'Regex to match with function names in YAML file'
+    default: ''
+  tag:
+    description: "Override latest tag on function Docker image, takes 'sha' or 'branch'"
+    default: 'sha'
+  buildLabel:
+    description: "Add a build-arg for Docker (KEY=VALUE)"
+    default: ''
+  buildArg:
+    description: "Add a label for Docker image (LABEL=VALUE)"
+    default: ''
+  buildOption:
+    description: "Set a build option, e.g. dev"
+    default: ''
+  path:
+    description: "Path to stack YAML file"
+    default: "stack.yml"
+runs:
+  using: 'docker'
+  image: 'docker://openfaas/faas-cli:0.9.1'
+  args:
+    - 'faas-cli'
+    - 'build'
+    - '-f=${{ inputs.path }}'
+    - '--filter=${{ inputs.filter }}'
+    - '--regex=${{ inputs.regex }}'
+    - '--tag=${{ inputs.tag }}'

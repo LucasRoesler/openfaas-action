@@ -1,0 +1,22 @@
+name: 'OpenFaaS CLI Login Action'
+description: 'Login to your OpenFaaS Gateway'
+author: 'Lucas Roesler'
+inputs:
+  gateway:
+    description: 'the public URL of your OpenFaaS Gateway'
+    required: true
+  username:
+    description: 'username for authentication'
+    required: true
+  password:
+    description: 'password for authentication'
+    required: true
+runs:
+  using: 'docker'
+  image: 'docker://openfaas/faas-cli:0.9.1'
+  args:
+    - 'faas-cli'
+    - 'login'
+    - '--gateway=${{ inputs.gateway }}'
+    - '--username=${{ inputs.username }}'
+    - '--password=${{ inputs.password }}'

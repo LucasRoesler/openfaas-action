@@ -1,0 +1,27 @@
+name: 'OpenFaaS CLI Push Action'
+description: 'Push your OpenFaaS function to a Docker registry'
+author: 'Lucas Roesler'
+inputs:
+  filter:
+    description: 'Wildcard to match with function names in YAML file'
+    default: ''
+  regex:
+    description: 'Regex to match with function names in YAML file'
+    default: ''
+  tag:
+    description: "Override latest tag on function Docker image, takes 'sha' or 'branch'"
+    default: 'sha'
+  path:
+    description: "Path to stack YAML file"
+    default: "./stack.yml"
+runs:
+  using: 'docker'
+  image: 'docker://openfaas/faas-cli:0.9.1'
+  args:
+    - 'faas-cli'
+    - 'push'
+    - '-f ${{ inputs.path }}'
+    - '--filter=${{ inputs.filter }}'
+    - '--regex=${{ inputs.regex }}'
+    - '--tag=${{ inputs.tag }}'
+
