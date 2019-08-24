@@ -20,7 +20,7 @@ runs:
   args:
     - 'faas-cli'
     - 'push'
-    - '-f ${{ inputs.path }}'
+    - '-f=${{ inputs.path }}'
     - '--filter=${{ inputs.filter }}'
     - '--regex=${{ inputs.regex }}'
     - '--tag=${{ inputs.tag }}'
