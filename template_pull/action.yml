@@ -7,7 +7,7 @@ inputs:
     retuired: false
 runs:
   using: 'docker'
-  image: 'docker://openfaas/faas-cli:0.9.1'
+  image: 'docker://openfaas/faas-cli:0.9.2'
   args:
     - 'faas-cli'
     - 'template'
