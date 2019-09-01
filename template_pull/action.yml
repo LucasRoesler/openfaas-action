@@ -4,7 +4,7 @@ author: 'Lucas Roesler'
 inputs:
   repository_url:
     description: 'repository to pull templates from, defaults to the core templates'
-    retuired: false
+    required: false
 runs:
   using: 'docker'
   image: 'docker://openfaas/faas-cli:0.9.2'
