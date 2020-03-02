@@ -11,10 +11,10 @@ inputs:
   tag:
     description: "Override latest tag on function Docker image, takes 'sha' or 'branch'"
     default: 'sha'
-  buildLabel:
+  buildArg:
     description: "Add a build-arg for Docker (KEY=VALUE)"
     default: ''
-  buildArg:
+  buildLabel:
     description: "Add a label for Docker image (LABEL=VALUE)"
     default: ''
   buildOption:
